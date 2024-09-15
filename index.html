@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+  <script type="module" src="scripts/script.js" charset="utf-8"></script>
+  <title>Kanban</title>
+ </head>
+ <body>
+  <main id="main">
+   <div id="add-board" class="add-board">+</div>
+   <div id="boards-container" class="boards-container">
+    <div id="boards" class="boards"></div>
+   </div>
+   <div id="add-board-modal" class="add-board-modal">
+    <div id="close-add-board" class="close-add-board">x</div>
+    <h2>Create A Board</h2>
+    <form>
+     <label>
+      <input id="board-title" placeholder="Board Title" />
+     </label>
+     <div id="colors" class="colors"></div>
+     <textarea
+      id="board-description"
+      placeholder="Description"
+      rows="10"
+     ></textarea>
+     <button id="add-board-create" type="submit">Create</button>
+    </form>
+   </div>
+   <div id="add-task-modal" class="task-modal add-task-modal">
+    <h2 class="task-board-title" id="task-board-title"></h2>
+    <form>
+     <input id="task-title" class="task-title" placeholder="Task" />
+     <div id="task-colors" class="task-colors"></div>
+     <textarea id="task-desc" placeholder="Description"></textarea>
+     <button id="add-task-create" type="submit">Add Task</button>
+    </form>
+   </div>
+  </main>
+ </body>
+</html>

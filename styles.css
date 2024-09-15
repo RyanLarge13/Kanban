@@ -1,0 +1,295 @@
+* {
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+ font-family: Sans-Serif;
+}
+
+body {
+ background-color: #000;
+ color: #fff;
+}
+
+main {
+ height: 100vh;
+ overflow-y: auto;
+}
+
+.add-board {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 40px;
+ height: 40px;
+ border-radius: 10000px;
+ background-color: #222;
+ font-size: 20px;
+ position: fixed;
+ bottom: 10px;
+ right: 10px;
+ z-index: 999;
+}
+
+.add-board-modal,
+.task-modal {
+ opacity: 0;
+ pointer-events: none;
+ position: fixed;
+ inset: 0;
+ z-index: 999;
+ background-color: #222;
+ padding: 25px;
+ transition: 250ms ease-in-out;
+}
+
+.close-add-board {
+ position: absolute;
+ top: 25px;
+ right: 25px;
+ font-size: 24px;
+ font-weight: 700;
+}
+
+.add-board-modal h2 {
+ font-size: 28px;
+}
+
+.add-board-modal input,
+.add-task-modal input {
+ margin: 50px 0;
+ font-size: 22px;
+ background-color: transparent;
+ padding: 5px 0;
+ outline: none;
+ border: none;
+ color: #fff;
+}
+
+.add-board-modal input::focus,
+add-task-modal input::focus {
+ outline: none;
+ border: none;
+}
+
+.add-board-modal textarea,
+.add-task-modal textarea {
+ color: #fff;
+ font-size: 18px;
+ margin: 50px 0;
+ width: 100%;
+ background-color: transparent;
+ padding: 5px 0;
+ outline: none;
+ border: none;
+}
+
+.add-board-modal textarea::focus,
+.add-task-modal textarea::focus {
+ outline: none;
+ border: none;
+}
+
+.add-board-modal button,
+.add-task-modal button {
+ font-size: 24px;
+ background-color: transparent;
+ font-weight: 600;
+ border: none;
+ outline: none;
+ color: #d8b4fe;
+}
+
+.add-board-modal.show,
+.task-modal.show {
+ opacity: 1;
+ pointer-events: all;
+}
+
+.colors,
+.task-colors {
+ padding: 5;
+ display: flex;
+ flex-wrap: wrap;
+ width: 100%;
+ gap: 10px;
+}
+
+.color {
+ width: 25px;
+ height: 25px;
+ border-radius: 1000px;
+}
+
+.boards-container {
+ position: relative;
+ color: #000;
+ overflow-x: hidden;
+ height: 100vh;
+ touch-action: none;
+}
+
+.boards {
+ color: #000;
+ display: flex;
+ justify-content: flex-start;
+ align-items: flex-start;
+ gap: 25px;
+ padding: 25px;
+ height: 80%;
+ touch-action: none;
+}
+
+.board {
+ opacity: 0.9;
+ position: relative;
+ border-radius: 8px;
+ padding: 25px;
+ box-shadow: 0 0.1em 0.25em 0 #111;
+ touch-action: none;
+ transition: scale(250ms ease-in-out), opacity(250ms ease-in-out);
+}
+
+.board-drag-icon {
+ font-weight: 600;
+ position: absolute;
+ top: 10px;
+ left: 10px;
+ right: 50px;
+ padding: 5px;
+ z-index: 10;
+ font-size: 20px;
+}
+
+.board-title-index {
+ margin-top: 25px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.board-index {
+ font-weight: 600;
+ font-size: 0.75em;
+}
+
+.board-children-len {
+ font-size: 0.75em;
+}
+
+.board-desc {
+ margin-top: 10px;
+ background-color: #fff;
+ border-radius: 10px;
+ padding: 8px;
+}
+
+.board.dragging {
+ min-width: unset;
+ width: unset;
+ opacity: 0.5;
+ scale: 1.1;
+}
+
+.board-title,
+.task-title {
+ margin-bottom: 10px;
+}
+
+.simple-task {
+ margin-top: 25px;
+ padding: 10px;
+ width: 100%;
+ box-shadow: 0 0.1em 0.25em 0 rgba(0, 0, 0, 0.2);
+ border-radius: 5px;
+}
+
+.simple-task-title-user {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 5px;
+}
+
+.user {
+ width: 25px;
+ height: 25px;
+ border-radius: 1000px;
+ background-color: #000;
+ color: #fff;
+ font-size: 10px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.tags {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ align-items: center;
+ gap: 5px;
+ margin: 5px 0;
+}
+
+.tag {
+ padding: 2px 10px;
+ border-radius: 100px;
+}
+
+.number-due {
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ gap: 5px;
+ margin-top: 10px;
+}
+
+.add-task-btn {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ font-size: 20px;
+ width: 25px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 25px;
+ border-radius: 2px;
+ background-color: #fff;
+ border: none;
+ outline: none;
+ box-shadow: 0 0.1em 0.25em 0 rgba(0, 0, 0, 0.2);
+}
+
+.task {
+ background-color: #555;
+ color: #fff;
+ border-radius: 10px;
+ padding: 10px;
+ margin: 10px 0;
+ position: relative;
+ touch-action: none;
+}
+
+.task * {
+ pointer-events: none;
+}
+
+.task-color {
+ position: absolute;
+ top: 0;
+ right: 0;
+ left: 0;
+ height: 5px;
+ border-radius: 10px;
+ z-index: 10;
+}
+
+.task-title {
+ font-weight: 600;
+ font-size: 1.25em;
+}
+
+.task-desc {
+ margin-top: 5px;
+}
