@@ -29,17 +29,12 @@ let taskSelected = null;
 let taskSelectTimeout = null;
 
 const initialize = () => {
-  programWidth();
   createColors();
   addColorListeners();
   createAddBtn();
   createCloseAddBoard();
   createNewBoardBtn();
   const boardContainer = document.getElementById("boards-container");
-  
-  const programWidth = () => {
-    const width = window.innerWidth;
-  }
 
   boardContainer.addEventListener("pointerdown", e => {
     if (e.target.matches(".add-task-btn")) {
@@ -205,7 +200,8 @@ const resetSwipe = () => {
 };
 
 const eWithin = event => {
-  const within = event.pageX >= 100 && event.pageX <= window.innerWidth - 100;
+  const delta = e.pageX - swipe.offsetX;
+  const within = Math.abs(delta) >= 100;
   return within;
 };
 
